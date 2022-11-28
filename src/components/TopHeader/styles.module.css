@@ -1,0 +1,13 @@
+.topHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.profilePhoto {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 10px 20px 10px 0px;
+}

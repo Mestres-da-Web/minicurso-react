@@ -11,3 +11,7 @@
 html #root {
   height: 100vh;
 }
+
+body {
+  --primary: #462bb8;
+}

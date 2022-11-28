@@ -1,0 +1,13 @@
+.layoutContainer {
+  display: flex;
+  height: 100%;
+}
+
+.leftContainer {
+  background-color: var(--primary);
+  flex: 8%;
+}
+
+.rightContainer {
+  flex: 92%;
+}
