@@ -1,0 +1,22 @@
+.container {}
+
+.container label {
+  font-size: 18px;
+  color: var(--text-secondary)
+}
+
+.container select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background-image: url("../../assets/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+  padding: 5px;
+  padding-right: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}

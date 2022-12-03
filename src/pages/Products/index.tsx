@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import ProductsSubHeader from "./components/ProductsSubHeader";
 
 interface IProduct {
   _id: string;
@@ -14,7 +15,6 @@ interface IProduct {
 }
 
 const Products = () => {
-  const [value, setValue] = useState(0);
   const [productsList, setProductsList] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -29,23 +29,8 @@ const Products = () => {
 
   return (
     <div>
-      <select onChange={(e) => console.log(e.target.value)}>
-        <option>Todos os produtos</option>
-        <option>Produtos excluídos</option>
-      </select>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        onChange={(e) => {
-          console.log(e.target.value);
-          setValue(parseInt(e.target.value));
-        }}
-      />
-      <span>{value}</span>
-      <button onClick={() => console.log("Button pressed")}>
-        Novo produto
-      </button>
+      <ProductsSubHeader />
+
       {productsList.length > 0 ? (
         productsList.map((product) => {
           return <h2>{product.name}</h2>;
