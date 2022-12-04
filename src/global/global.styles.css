@@ -17,4 +17,7 @@ body {
 
   --text-primary: #171725;
   --text-secondary: #92929D;
+  --text-button: white;
+
+  --slider-background: #f4f5f6
 }

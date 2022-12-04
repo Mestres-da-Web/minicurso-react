@@ -1,8 +1,8 @@
-.container {}
-
 .container label {
-  font-size: 18px;
-  color: var(--text-secondary)
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--text-secondary);
+  text-transform: uppercase;
 }
 
 .container select {

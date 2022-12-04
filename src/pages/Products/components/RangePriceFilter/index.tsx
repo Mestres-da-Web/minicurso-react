@@ -1,13 +1,18 @@
 import { useState } from "react";
 
+import styles from "./styles.module.css";
+
 const RangePriceFilter = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <div>
-      <label htmlFor="input_range">Filtro preço</label>
+    <div className={styles.container}>
+      <label htmlFor="input_range" className={styles.label}>
+        Filtro preço:
+      </label>
       <input
         id="input_range"
+        className={styles.input}
         type="range"
         min="0"
         max="100"
@@ -16,7 +21,7 @@ const RangePriceFilter = () => {
           setValue(parseInt(e.target.value));
         }}
       />
-      <span>{value}</span>
+      <span className={styles.value}>R${value}</span>
     </div>
   );
 };

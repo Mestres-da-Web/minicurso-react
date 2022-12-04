@@ -1,6 +1,13 @@
+import styles from "./styles.module.css";
+
 const Button = () => {
   return (
-    <button onClick={() => console.log("Button pressed")}>Novo produto</button>
+    <button
+      className={styles.button}
+      onClick={() => console.log("Button pressed")}
+    >
+      Novo produto
+    </button>
   );
 };
 
