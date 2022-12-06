@@ -2,8 +2,17 @@ import { useState } from "react";
 
 import styles from "./styles.module.css";
 
-const RangePriceFilter = () => {
+interface Props {
+  onPriceChange?: (value: number) => void;
+}
+
+const RangePriceFilter = ({ onPriceChange }: Props) => {
   const [value, setValue] = useState(0);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(parseInt(e.target.value));
+    if (onPriceChange !== undefined) onPriceChange(parseInt(e.target.value));
+  };
 
   return (
     <div className={styles.container}>
@@ -15,11 +24,9 @@ const RangePriceFilter = () => {
         className={styles.input}
         type="range"
         min="0"
-        max="100"
-        onChange={(e) => {
-          console.log(e.target.value);
-          setValue(parseInt(e.target.value));
-        }}
+        max="1000"
+        value={value}
+        onChange={handleChange}
       />
       <span className={styles.value}>R${value}</span>
     </div>

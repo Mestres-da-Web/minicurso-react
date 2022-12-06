@@ -16,6 +16,7 @@ interface IProduct {
 
 const Products = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
+  const [priceFilter, setPriceFilter] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -27,13 +28,26 @@ const Products = () => {
     getData();
   }, []);
 
+  const handlePriceChange = (value: number) => {
+    setPriceFilter(value);
+  };
+
+  const productsFiltered = productsList.filter(
+    (product) => product.price > priceFilter,
+  );
+
   return (
     <div>
-      <ProductsSubHeader />
+      <ProductsSubHeader onPriceChange={handlePriceChange} />
 
-      {productsList.length > 0 ? (
-        productsList.map((product) => {
-          return <h2>{product.name}</h2>;
+      {productsFiltered.length > 0 ? (
+        productsFiltered.map((product) => {
+          return (
+            <div>
+              <span>{product.name} - </span>
+              <span>{product.price}</span>
+            </div>
+          );
         })
       ) : (
         <h1>Nenhum produto</h1>

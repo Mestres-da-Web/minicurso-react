@@ -4,12 +4,16 @@ import RangePriceFilter from "../RangePriceFilter";
 
 import styles from "./styles.module.css";
 
-const ProductsSubHeader = () => {
+interface Props {
+  onPriceChange?: (value: number) => void;
+}
+
+const ProductsSubHeader = ({ onPriceChange }: Props) => {
   return (
     <div className={styles.container}>
       <h1>Produtos</h1>
       <Select />
-      <RangePriceFilter />
+      <RangePriceFilter onPriceChange={onPriceChange} />
       <Button />
     </div>
   );
