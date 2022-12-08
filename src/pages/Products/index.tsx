@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import ProductsSubHeader from "./components/ProductsSubHeader";
+import ProductsTable from "./components/ProductsTable";
 
-interface IProduct {
+import styles from "./styles.module.css";
+
+export interface IProduct {
   _id: string;
   name: string;
   description: string;
@@ -37,18 +40,11 @@ const Products = () => {
   );
 
   return (
-    <div>
+    <div className={styles.container}>
       <ProductsSubHeader onPriceChange={handlePriceChange} />
 
       {productsFiltered.length > 0 ? (
-        productsFiltered.map((product) => {
-          return (
-            <div>
-              <span>{product.name} - </span>
-              <span>{product.price}</span>
-            </div>
-          );
-        })
+        <ProductsTable data={productsFiltered} />
       ) : (
         <h1>Nenhum produto</h1>
       )}

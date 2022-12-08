@@ -6,6 +6,7 @@
 .leftContainer {
   background-color: var(--primary);
   flex: 8%;
+  max-width: 80px;
 }
 
 .rightContainer {
