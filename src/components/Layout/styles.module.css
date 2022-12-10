@@ -11,4 +11,5 @@
 
 .rightContainer {
   flex: 92%;
+  overflow: scroll;
 }
