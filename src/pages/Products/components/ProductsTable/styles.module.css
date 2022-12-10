@@ -42,7 +42,6 @@
 
 .price span {}
 
-.icons {
-  display: flex;
-  gap: 20px;
+.icons svg {
+  margin: 10px;
 }
