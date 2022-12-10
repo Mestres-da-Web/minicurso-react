@@ -41,3 +41,8 @@
 .amount span {}
 
 .price span {}
+
+.icons {
+  display: flex;
+  gap: 20px;
+}

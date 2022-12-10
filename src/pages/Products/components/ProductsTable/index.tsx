@@ -1,5 +1,7 @@
 import { IProduct } from "../..";
 import ProductIcon from "../../../../assets/macbook.svg";
+import DeleteIcon from "../../../../components/icons/Delete";
+import EditIcon from "../../../../components/icons/Edit";
 
 import styles from "./styles.module.css";
 
@@ -17,6 +19,7 @@ const ProductsTable = ({ data }: Props) => {
         <th>Entregue por</th>
         <th>Qº Estoque</th>
         <th>Preço</th>
+        <th>Hello</th>
       </tr>
 
       {data.map((product) => {
@@ -44,6 +47,18 @@ const ProductsTable = ({ data }: Props) => {
             </td>
             <td className={styles.price}>
               <span>R$ {product.price}</span>
+            </td>
+            <td className={styles.icons}>
+              <EditIcon
+                onClick={() => {
+                  console.log("Edit icon pressed", product._id);
+                }}
+              />
+              <DeleteIcon
+                onClick={() => {
+                  console.log("Delete icon pressed", product._id);
+                }}
+              />
             </td>
           </tr>
         );

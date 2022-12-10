@@ -1,4 +1,5 @@
 import Button from "../../../../components/Button";
+import PlusIcon from "../../../../components/icons/Plus";
 import Select from "../../../../components/Select";
 import RangePriceFilter from "../RangePriceFilter";
 
@@ -14,7 +15,7 @@ const ProductsSubHeader = ({ onPriceChange }: Props) => {
       <h1>Produtos</h1>
       <Select />
       <RangePriceFilter onPriceChange={onPriceChange} />
-      <Button />
+      <Button icon={<PlusIcon />} text={"Novo produto"} />
     </div>
   );
 };
