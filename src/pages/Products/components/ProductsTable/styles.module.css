@@ -42,6 +42,7 @@
 
 .price span {}
 
-.icons svg {
-  margin: 10px;
+.icons {
+  display: flex;
+  gap: 20px
 }

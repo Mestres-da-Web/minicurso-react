@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Modal from "../../components/Modal";
 import api from "../../services/api";
 import ProductsSubHeader from "./components/ProductsSubHeader";
 import ProductsTable from "./components/ProductsTable";
@@ -21,7 +20,6 @@ export interface IProduct {
 const Products = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
   const [priceFilter, setPriceFilter] = useState(0);
-  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -41,10 +39,6 @@ const Products = () => {
     (product) => product.price > priceFilter,
   );
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <div className={styles.container}>
       <ProductsSubHeader onPriceChange={handlePriceChange} />
@@ -54,15 +48,6 @@ const Products = () => {
       ) : (
         <h1>Nenhum produto</h1>
       )}
-
-      {showModal ? (
-        <Modal onClose={handleCloseModal}>
-          <div
-            style={{ backgroundColor: "red", width: 100, height: 100 }}
-            onClick={() => console.log("Hello form red square")}
-          ></div>
-        </Modal>
-      ) : null}
     </div>
   );
 };
