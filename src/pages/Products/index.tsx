@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import api from "../../services/api";
+import AddProductForm from "./components/AddProductForm";
 import ProductsSubHeader from "./components/ProductsSubHeader";
 import ProductsTable from "./components/ProductsTable";
 
@@ -57,10 +58,7 @@ const Products = () => {
 
       {showModal ? (
         <Modal onClose={handleCloseModal}>
-          <div
-            style={{ width: 500, height: 500, backgroundColor: "red" }}
-            onClick={() => console.log("Red square clicked")}
-          ></div>
+          <AddProductForm />
         </Modal>
       ) : null}
     </div>

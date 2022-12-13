@@ -1,6 +1,6 @@
 import Button from "../../../../components/Button";
 import PlusIcon from "../../../../components/icons/Plus";
-import Select from "../../../../components/Select";
+import Select from "../SelectSubHeader";
 import RangePriceFilter from "../RangePriceFilter";
 
 import styles from "./styles.module.css";

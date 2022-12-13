@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-const Select = () => {
+const SelectSubHeader = () => {
   return (
     <div className={styles.container}>
       <label htmlFor="select">Ver:</label>
@@ -12,4 +12,4 @@ const Select = () => {
   );
 };
 
-export default Select;
+export default SelectSubHeader;
