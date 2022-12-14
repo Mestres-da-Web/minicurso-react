@@ -5,9 +5,9 @@ const DeleteIcon = ({ width = 16.5, height = 18.8, onClick }: SVGProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16.5 18.857"
       width={width}
       height={height}
-      viewBox="0 0 16.5 18.857"
       onClick={onClick}
     >
       <path

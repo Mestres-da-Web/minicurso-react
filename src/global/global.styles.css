@@ -18,6 +18,8 @@ body {
   --text-primary: #171725;
   --text-secondary: #92929D;
   --text-button: white;
+  --text-select: #44444F;
 
-  --slider-background: #f4f5f6
+  --slider-background: #f4f5f6;
+  --select-border: #F1F1F5;
 }

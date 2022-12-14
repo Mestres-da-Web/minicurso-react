@@ -3,4 +3,36 @@
   padding: 20px;
   width: 70vw;
   height: 70vh;
+
+  border-radius: 15px;
+}
+
+.headerLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 55vh;
+}
+
+.buttonLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

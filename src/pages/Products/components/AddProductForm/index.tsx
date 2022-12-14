@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "../../../../components/Button";
+import CloseIcon from "../../../../components/icons/Close";
 import InputSelect from "../../../../components/InputSelect";
 import InputText from "../../../../components/InputText";
 import InputTextArea from "../../../../components/InputTextArea";
@@ -12,26 +14,28 @@ const AddProductForm = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Adicionar novo produto</h1>
-      <button>X</button>
-      <form onSubmit={handleFormSubmit}>
-        <InputSelect
-          name="category"
-          label="CATEGORIA"
-          options={["Acessórios", "Periféricos"]}
-        />
-
-        <InputText
-          name="brand"
-          label="ESCOLHER MARCA"
-          placeholder="ESCOLHER MARCA"
-        />
-
-        <InputText
-          name="seller"
-          label="LOJA DE VENDA"
-          placeholder="DIGITE O NOME DA LOJA PARCEIRA"
-        />
+      <div className={styles.headerLine}>
+        <h1 className={styles.title}>Adicionar novo produto</h1>
+        <CloseIcon />
+      </div>
+      <form className={styles.form} onSubmit={handleFormSubmit}>
+        <div className={styles.line}>
+          <InputSelect
+            name="category"
+            label="CATEGORIA"
+            options={["Acessórios", "Periféricos"]}
+          />
+          <InputText
+            name="brand"
+            label="ESCOLHER MARCA"
+            placeholder="ESCOLHER MARCA"
+          />
+          <InputText
+            name="seller"
+            label="LOJA DE VENDA"
+            placeholder="DIGITE O NOME DA LOJA PARCEIRA"
+          />
+        </div>
 
         <InputText
           name="product"
@@ -45,19 +49,24 @@ const AddProductForm = () => {
           placeholder="DIGITE O PREÇO"
         />
 
-        <InputTextArea
-          name="description"
-          label="DESCRIÇÃO DO PRODUTO"
-          placeholder="DESCREVA SEU PRODUTO"
-        />
+        <div className={styles.line}>
+          <InputTextArea
+            name="description"
+            label="DESCRIÇÃO DO PRODUTO"
+            placeholder="DESCREVA SEU PRODUTO"
+            height={200}
+          />
 
-        <InputText
-          name="inventory"
-          label="QUANTIDADE EM ESTOQUE"
-          placeholder="Nº UNIDADES"
-        />
+          <InputText
+            name="inventory"
+            label="QUANTIDADE EM ESTOQUE"
+            placeholder="Nº UNIDADES"
+          />
+        </div>
 
-        <button type="submit">Salvar</button>
+        <div className={styles.buttonLine}>
+          <Button text="Adicionar produto" type="submit" />
+        </div>
       </form>
     </div>
   );

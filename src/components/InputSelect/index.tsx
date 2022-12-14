@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./styles.module.css";
 
 interface Props {
   name: string;
@@ -8,7 +9,7 @@ interface Props {
 
 const InputSelect = ({ name, label, options }: Props) => {
   return (
-    <div>
+    <div className={styles.container}>
       <label>{label}</label>
       <br />
       <select>
