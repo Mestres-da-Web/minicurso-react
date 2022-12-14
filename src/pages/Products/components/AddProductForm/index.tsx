@@ -4,12 +4,25 @@ import CloseIcon from "../../../../components/icons/Close";
 import InputSelect from "../../../../components/InputSelect";
 import InputText from "../../../../components/InputText";
 import InputTextArea from "../../../../components/InputTextArea";
+import api from "../../../../services/api";
 import styles from "./styles.module.css";
 
-const AddProductForm = () => {
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+interface Props {
+  onProductCreation: () => void;
+}
+
+const AddProductForm = ({ onProductCreation }: Props) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    const data = new FormData(e.currentTarget);
+    const result = Object.fromEntries(data);
+
+    try {
+      await api.post("/product", result);
+      onProductCreation();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -31,14 +44,14 @@ const AddProductForm = () => {
             placeholder="ESCOLHER MARCA"
           />
           <InputText
-            name="seller"
+            name="store"
             label="LOJA DE VENDA"
             placeholder="DIGITE O NOME DA LOJA PARCEIRA"
           />
         </div>
 
         <InputText
-          name="product"
+          name="name"
           label="NOME DO PRODUTO"
           placeholder="ESCREVA O NOME DO SEU ITEM"
         />
@@ -58,7 +71,7 @@ const AddProductForm = () => {
           />
 
           <InputText
-            name="inventory"
+            name="amount"
             label="QUANTIDADE EM ESTOQUE"
             placeholder="Nº UNIDADES"
           />

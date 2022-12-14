@@ -13,7 +13,7 @@ const InputTextArea = ({ name, label, placeholder, height }: Props) => {
     <div className={styles.container} style={{ height }}>
       <label>{label}</label>
       <br />
-      <textarea placeholder={placeholder} />
+      <textarea name={name} placeholder={placeholder} />
     </div>
   );
 };

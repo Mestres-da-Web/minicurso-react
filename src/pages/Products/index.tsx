@@ -24,13 +24,13 @@ const Products = () => {
   const [priceFilter, setPriceFilter] = useState(0);
   const [showModal, setShowModal] = useState(true);
 
+  const getData = async () => {
+    const result = await api.get<IProduct[]>("/product");
+
+    setProductsList(result.data);
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      const result = await api.get<IProduct[]>("/product");
-
-      setProductsList(result.data);
-    };
-
     getData();
   }, []);
 
@@ -46,9 +46,21 @@ const Products = () => {
     setShowModal(false);
   };
 
+  const handleAddProductClick = () => {
+    setShowModal(true);
+  };
+
+  const handleProductCreation = () => {
+    setShowModal(false);
+    getData();
+  };
+
   return (
     <div className={styles.container}>
-      <ProductsSubHeader onPriceChange={handlePriceChange} />
+      <ProductsSubHeader
+        onPriceChange={handlePriceChange}
+        onAddProductClick={handleAddProductClick}
+      />
 
       {productsFiltered.length > 0 ? (
         <ProductsTable data={productsFiltered} />
@@ -58,7 +70,7 @@ const Products = () => {
 
       {showModal ? (
         <Modal onClose={handleCloseModal}>
-          <AddProductForm />
+          <AddProductForm onProductCreation={handleProductCreation} />
         </Modal>
       ) : null}
     </div>

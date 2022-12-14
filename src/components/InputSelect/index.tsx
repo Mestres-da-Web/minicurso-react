@@ -12,7 +12,7 @@ const InputSelect = ({ name, label, options }: Props) => {
     <div className={styles.container}>
       <label>{label}</label>
       <br />
-      <select>
+      <select name={name}>
         {options.map((option) => (
           <option>{option}</option>
         ))}

@@ -7,15 +7,20 @@ import styles from "./styles.module.css";
 
 interface Props {
   onPriceChange?: (value: number) => void;
+  onAddProductClick?: () => void;
 }
 
-const ProductsSubHeader = ({ onPriceChange }: Props) => {
+const ProductsSubHeader = ({ onPriceChange, onAddProductClick }: Props) => {
   return (
     <div className={styles.container}>
       <h1>Produtos</h1>
       <Select />
       <RangePriceFilter onPriceChange={onPriceChange} />
-      <Button icon={<PlusIcon />} text={"Novo produto"} />
+      <Button
+        icon={<PlusIcon />}
+        text={"Novo produto"}
+        onClick={onAddProductClick}
+      />
     </div>
   );
 };

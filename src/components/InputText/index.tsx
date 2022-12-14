@@ -11,7 +11,7 @@ const InputText = ({ name, label, placeholder }: Props) => {
     <div className={styles.container}>
       <label>{label}</label>
       <br />
-      <input type={"text"} placeholder={placeholder} />
+      <input name={name} type={"text"} placeholder={placeholder} />
     </div>
   );
 };
