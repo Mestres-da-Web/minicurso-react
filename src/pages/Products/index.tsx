@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import api from "../../services/api";
 import AddProductForm from "./components/AddProductForm";
+import DeleteConfirmation from "./components/DeleteConfirmation";
 import ProductsSubHeader from "./components/ProductsSubHeader";
 import ProductsTable from "./components/ProductsTable";
 
@@ -22,7 +23,7 @@ export interface IProduct {
 const Products = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
   const [priceFilter, setPriceFilter] = useState(0);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const getData = async () => {
     const result = await api.get<IProduct[]>("/product");
@@ -73,6 +74,10 @@ const Products = () => {
           <AddProductForm onProductCreation={handleProductCreation} />
         </Modal>
       ) : null}
+
+      <Modal onClose={handleCloseModal}>
+        <DeleteConfirmation />
+      </Modal>
     </div>
   );
 };

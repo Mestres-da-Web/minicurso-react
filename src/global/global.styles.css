@@ -14,6 +14,7 @@ html #root {
 
 body {
   --primary: #462bb8;
+  --red: #FF1A1A;
 
   --text-primary: #171725;
   --text-secondary: #92929D;

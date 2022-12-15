@@ -11,6 +11,10 @@
   align-items: center;
 }
 
-.button span {
+.withIcon {
   margin-left: 15px;
+}
+
+.withoutIcon {
+  margin-left: 0
 }
