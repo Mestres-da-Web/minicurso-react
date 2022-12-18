@@ -13,7 +13,7 @@ import { IDeleteProduct, IProduct } from "./types";
 const Products = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
   const [priceFilter, setPriceFilter] = useState(0);
-  const [isAdding, setIsAdding] = useState(false);
+  const [showProductForm, setShowProductForm] = useState(false);
   const [deleteProductFlowSettings, setDeleteProductFlowSettings] =
     useState<IDeleteProduct>({
       getConfirmation: false,
@@ -40,7 +40,7 @@ const Products = () => {
   );
 
   const handleCloseAddProductModal = () => {
-    setIsAdding(false);
+    setShowProductForm(false);
   };
 
   const handleCloseDeleteConfirmationModal = () => {
@@ -56,11 +56,11 @@ const Products = () => {
   };
 
   const handleAddProductClick = () => {
-    setIsAdding(true);
+    setShowProductForm(true);
   };
 
   const handleProductCreation = () => {
-    setIsAdding(false);
+    setShowProductForm(false);
     getData();
   };
 
@@ -117,7 +117,7 @@ const Products = () => {
         <h1>Nenhum produto</h1>
       )}
 
-      {isAdding ? (
+      {showProductForm ? (
         <Modal onClose={handleCloseAddProductModal}>
           <AddProductForm onProductCreation={handleProductCreation} />
         </Modal>
