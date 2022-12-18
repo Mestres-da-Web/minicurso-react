@@ -13,7 +13,7 @@ import { IDeleteProduct, IProduct } from "./types";
 const Products = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
   const [priceFilter, setPriceFilter] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const [deleteProductFlowSettings, setDeleteProductFlowSettings] =
     useState<IDeleteProduct>({
       getConfirmation: false,
@@ -39,16 +39,28 @@ const Products = () => {
     (product) => product.price > priceFilter,
   );
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const handleCloseAddProductModal = () => {
+    setIsAdding(false);
+  };
+
+  const handleCloseDeleteConfirmationModal = () => {
+    setDeleteProductFlowSettings((deleteProductFlowSettings) => {
+      return { ...deleteProductFlowSettings, getConfirmation: false };
+    });
+  };
+
+  const handleClosDeleteFeedbackModal = () => {
+    setDeleteProductFlowSettings((deleteProductFlowSettings) => {
+      return { ...deleteProductFlowSettings, showFeedback: false };
+    });
   };
 
   const handleAddProductClick = () => {
-    setShowModal(true);
+    setIsAdding(true);
   };
 
   const handleProductCreation = () => {
-    setShowModal(false);
+    setIsAdding(false);
     getData();
   };
 
@@ -105,20 +117,20 @@ const Products = () => {
         <h1>Nenhum produto</h1>
       )}
 
-      {showModal ? (
-        <Modal onClose={handleCloseModal}>
+      {isAdding ? (
+        <Modal onClose={handleCloseAddProductModal}>
           <AddProductForm onProductCreation={handleProductCreation} />
         </Modal>
       ) : null}
 
       {deleteProductFlowSettings.getConfirmation ? (
-        <Modal onClose={handleCloseModal}>
+        <Modal onClose={handleCloseDeleteConfirmationModal}>
           <DeleteConfirmation onConfirmation={handleDeleteConfirmation} />
         </Modal>
       ) : null}
 
       {deleteProductFlowSettings.showFeedback ? (
-        <Modal onClose={handleCloseModal}>
+        <Modal onClose={handleClosDeleteFeedbackModal}>
           <DeleteFeedback onContinueClick={handleContinueClick} />
         </Modal>
       ) : null}
