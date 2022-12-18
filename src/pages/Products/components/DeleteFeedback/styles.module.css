@@ -17,17 +17,9 @@
   margin-top: 40px
 }
 
-.container>span {
-  font-size: 16px;
-  font-weight: normal;
-  margin-top: 30px;
-  color: var(--text-secondary);
-}
-
 .button {
   position: absolute;
   bottom: 20px;
-  background-color: var(--red);
   font-size: 16px;
   padding-inline: 100px
 }

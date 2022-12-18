@@ -1,15 +1,16 @@
-import { IProduct } from "../..";
 import ProductIcon from "../../../../assets/macbook.svg";
 import DeleteIcon from "../../../../components/icons/Delete";
 import EditIcon from "../../../../components/icons/Edit";
+import { IProduct } from "../../types";
 
 import styles from "./styles.module.css";
 
 interface Props {
   data: IProduct[];
+  onDeletePress: (id: string) => void;
 }
 
-const ProductsTable = ({ data }: Props) => {
+const ProductsTable = ({ data, onDeletePress }: Props) => {
   return (
     <table className={styles.table}>
       <tr>
@@ -56,7 +57,7 @@ const ProductsTable = ({ data }: Props) => {
               />
               <DeleteIcon
                 onClick={() => {
-                  console.log("Delete icon pressed", product._id);
+                  onDeletePress(product._id);
                 }}
               />
             </td>
