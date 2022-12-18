@@ -7,10 +7,11 @@ import styles from "./styles.module.css";
 
 interface Props {
   data: IProduct[];
-  onDeletePress: (id: string) => void;
+  onEditClick: (item: IProduct) => void;
+  onDeleteClick: (id: string) => void;
 }
 
-const ProductsTable = ({ data, onDeletePress }: Props) => {
+const ProductsTable = ({ data, onEditClick, onDeleteClick }: Props) => {
   return (
     <table className={styles.table}>
       <tr>
@@ -20,7 +21,6 @@ const ProductsTable = ({ data, onDeletePress }: Props) => {
         <th>Entregue por</th>
         <th>Qº Estoque</th>
         <th>Preço</th>
-        <th>Hello</th>
       </tr>
 
       {data.map((product) => {
@@ -52,12 +52,12 @@ const ProductsTable = ({ data, onDeletePress }: Props) => {
             <td className={styles.icons}>
               <EditIcon
                 onClick={() => {
-                  console.log("Edit icon pressed", product._id);
+                  onEditClick(product);
                 }}
               />
               <DeleteIcon
                 onClick={() => {
-                  onDeletePress(product._id);
+                  onDeleteClick(product._id);
                 }}
               />
             </td>

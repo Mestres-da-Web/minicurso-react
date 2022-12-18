@@ -20,6 +20,7 @@ const Products = () => {
       showFeedback: false,
       itemId: "",
     });
+  const [editItem, setEditItem] = useState<IProduct | undefined>(undefined);
 
   const getData = async () => {
     const result = await api.get<IProduct[]>("/product");
@@ -61,10 +62,11 @@ const Products = () => {
 
   const handleProductCreation = () => {
     setShowProductForm(false);
+    setEditItem(undefined);
     getData();
   };
 
-  const handleDeletePress = (id: string) => {
+  const handleDeleteClick = (id: string) => {
     setDeleteProductFlowSettings((deleteProductFlowSettings) => {
       return {
         ...deleteProductFlowSettings,
@@ -101,6 +103,10 @@ const Products = () => {
     });
   };
 
+  const handleEditClick = (item: IProduct) => {
+    setEditItem(item);
+  };
+
   return (
     <div className={styles.container}>
       <ProductsSubHeader
@@ -111,15 +117,19 @@ const Products = () => {
       {productsFiltered.length > 0 ? (
         <ProductsTable
           data={productsFiltered}
-          onDeletePress={handleDeletePress}
+          onDeleteClick={handleDeleteClick}
+          onEditClick={handleEditClick}
         />
       ) : (
         <h1>Nenhum produto</h1>
       )}
 
-      {showProductForm ? (
+      {showProductForm || editItem ? (
         <Modal onClose={handleCloseAddProductModal}>
-          <AddProductForm onProductCreation={handleProductCreation} />
+          <AddProductForm
+            defaultValues={editItem}
+            onProductCreation={handleProductCreation}
+          />
         </Modal>
       ) : null}
 
